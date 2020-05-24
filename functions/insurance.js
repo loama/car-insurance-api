@@ -6,20 +6,6 @@ function createProduct (type, sellIn, price) {
   }
 }
 
-const products = [
-  createProduct('Medium Coverage', 10, 20),
-  createProduct('Full Coverage', 2, 0),
-  createProduct('Low Coverage', 5, 7),
-  createProduct('Mega Coverage', 0, 80),
-  createProduct('Mega Coverage', -1, 80),
-  createProduct('Special Full Coverage', 15, 20),
-  createProduct('Special Full Coverage', 10, 49),
-  createProduct('Special Full Coverage', 5, 49),
-  createProduct('Super Sale', 3, 6)
-]
-
-const days = 30
-
 function reducePrice (product) {
   if (product.price > 0) {
     product.price = product.price - 1
@@ -39,6 +25,18 @@ function reduceSellIn (product) {
 }
 
 function updateProducts () {
+  const products = [
+    createProduct('Medium Coverage', 10, 20),
+    createProduct('Full Coverage', 2, 0),
+    createProduct('Low Coverage', 5, 7),
+    createProduct('Mega Coverage', 0, 80),
+    createProduct('Mega Coverage', -1, 80),
+    createProduct('Special Full Coverage', 15, 20),
+    createProduct('Special Full Coverage', 10, 49),
+    createProduct('Special Full Coverage', 5, 49),
+    createProduct('Super Sale', 3, 6)
+  ]
+
   const updatedProducts = JSON.parse(JSON.stringify(products))
 
   for (let i = 0; i < products.length; i++) {
@@ -94,6 +92,7 @@ function updateProducts () {
 
 function allDays (req, res) {
   const daysPrices = []
+  const days = 30
 
   for (let i = 0; i < days + 1; i++) {
     daysPrices.push(updateProducts())

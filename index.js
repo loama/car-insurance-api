@@ -1,6 +1,6 @@
 'use strict'
 
-let PORT = process.env.PORT || 8000
+const PORT = process.env.PORT || 8000
 
 const HOST = 'localhost'
 
