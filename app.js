@@ -9,7 +9,6 @@ const insurance = require('./functions/insurance')
 app.use(express.json())
 
 app
-  .get('/', (req, res) => insurance.allDays(req, res))
-  .get('/formatted', (req, res) => insurance.allDaysFormattedResult(req, res))
+  .get('/', (req, res) => insurance.allDaysJson(req, res))
 
 module.exports = app

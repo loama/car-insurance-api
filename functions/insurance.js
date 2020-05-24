@@ -103,7 +103,6 @@ function allDays (req, res) {
     daysPrices.push(updateProducts())
   }
 
-  console.log(daysPrices)
   return daysPrices
 }
 
@@ -120,4 +119,8 @@ function allDaysFormattedResult () {
   }
 }
 
-module.exports = { allDays, allDaysFormattedResult }
+function allDaysJson (req, res) {
+  res.send(allDays())
+}
+
+module.exports = { allDaysFormattedResult, allDaysJson }
