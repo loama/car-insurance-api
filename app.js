@@ -2,13 +2,13 @@
 
 var express = require('express')
 var app = express()
+var cors = require('cors')
 
 const insurance = require('./functions/insurance')
 
-// view engine setup
-app.use(express.json())
-
 app
+  .use(express.json())
+  .use(cors())
   .get('/', (req, res) => insurance.allDaysJson(req, res))
 
 module.exports = app
