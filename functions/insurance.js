@@ -12,7 +12,7 @@ const days = 30
 
 function reducePrice (product) {
   let amount = 1
-  if (product.sellIn <= 0) {
+  if (product.sellIn < 0) {
     amount = 2
   }
 
@@ -44,6 +44,10 @@ function updateProducts () {
       case 'Full Coverage':
         increasePrice(product)
         reduceSellIn(product)
+
+        if (product.sellIn < 0) {
+          increasePrice(product)
+        }
         break
 
       case 'Mega Coverage':
@@ -61,7 +65,7 @@ function updateProducts () {
           increasePrice(product)
         }
 
-        if (product.sellIn === 0) {
+        if (product.sellIn <= 0) {
           product.price = 0
         }
 
