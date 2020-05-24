@@ -80,19 +80,15 @@ function updateProducts () {
         break
 
       default:
-        // reduce sellIn
         reduceSellIn(product)
 
-        // reduce price
         reducePrice(product)
 
-        // if expired reduce price again
         if (product.sellIn === 0) {
           reducePrice(product)
         }
     }
   }
-
   return updatedProducts
 }
 

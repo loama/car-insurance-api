@@ -1,6 +1,10 @@
 'use strict'
 
-const PORT = 5000
+let PORT = process.env.PORT
+if (PORT === null || PORT === '') {
+  PORT = 8000
+}
+
 const HOST = 'localhost'
 
 const server = require('./app.js')
