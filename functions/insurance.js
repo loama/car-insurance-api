@@ -83,16 +83,6 @@ function updateProducts () {
 }
 
 function allDays (req, res) {
-  const daysPrices = []
-
-  for (let i = 0; i < days + 1; i++) {
-    daysPrices.push(updateProducts())
-  }
-
-  return daysPrices
-}
-
-function initProducts () {
   products = [
     createProduct('Medium Coverage', 10, 20),
     createProduct('Full Coverage', 2, 0),
@@ -104,25 +94,18 @@ function initProducts () {
     createProduct('Special Full Coverage', 5, 49),
     createProduct('Super Sale', 3, 6)
   ]
-}
 
-function allDaysFormattedResult () {
-  initProducts()
-  const result = allDays()
+  const daysPrices = []
 
-  for (let i = 0; i < result.length; i++) {
-    console.log('-------- day ' + i.toString() + ' --------')
-    console.log('name, sellIn, price')
-    for (let j = 0; j < result[i].length; j++) {
-      console.log(result[i][j].type + ', ' + result[i][j].sellIn.toString() + ', ' + result[i][j].price.toString())
-    }
-    console.log('')
+  for (let i = 0; i < days + 1; i++) {
+    daysPrices.push(updateProducts())
   }
+
+  return daysPrices
 }
 
 function allDaysJson (req, res) {
-  initProducts()
   res.send(allDays())
 }
 
-module.exports = { allDaysFormattedResult, allDaysJson }
+module.exports = { allDays, allDaysJson }
