@@ -17,7 +17,7 @@ function reducePrice (product) {
   }
 
   if (product.price > 0) {
-    product.price = product.price - amount
+    product.price = Math.max(product.price - amount, 0)
   } else {
     product.price = 0
   }
