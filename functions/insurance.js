@@ -11,8 +11,13 @@ let products = []
 const days = 30
 
 function reducePrice (product) {
+  let amount = 1
+  if (product.sellIn <= 0) {
+    amount = 2
+  }
+
   if (product.price > 0) {
-    product.price = product.price - 1
+    product.price = product.price - amount
   } else {
     product.price = 0
   }
@@ -71,12 +76,7 @@ function updateProducts () {
 
       default:
         reduceSellIn(product)
-
         reducePrice(product)
-
-        if (product.sellIn === 0) {
-          reducePrice(product)
-        }
     }
   }
   return updatedProducts
